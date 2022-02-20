@@ -28,7 +28,6 @@ namespace HTTPServer.Samples
                 ErrorMessage = $"Invalid keycode in param 1. There are no keycode {_params[0]}";
             }
         }
-
         public override NetworkAnswer GetAnswerData()
         {
             return new NetworkAnswer()
@@ -38,5 +37,4 @@ namespace HTTPServer.Samples
             };
         }
     }
-
 }
