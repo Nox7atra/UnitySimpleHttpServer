@@ -1,0 +1,13 @@
+{
+  "name": "com.nox7atra.unityhttpserver",
+  "displayName": "Unity Http Server",
+  "version": "1.0.0",
+  "description": "Simple Unity Http Server integration",
+  "keywords": [
+    "unity",
+    "http",
+	"web"
+  ],
+  "author": "Nox7atra",
+  "license": "MIT"
+}
