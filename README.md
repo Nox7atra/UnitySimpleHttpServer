@@ -69,3 +69,5 @@
 <li>Разделение на методы GET, POST и т.п.</li>
 <li>Настройка политики CORS</li>
 </ul>
+
+<h3>Исходники веб геймпада:</h3> https://github.com/Nox7atra/WebGamepadClient
