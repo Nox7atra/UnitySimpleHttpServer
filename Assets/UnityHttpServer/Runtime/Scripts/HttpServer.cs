@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -48,7 +47,7 @@ namespace HTTPServer
             response.AddHeader("Access-Control-Max-Age", "1728000");
             if (request.HttpMethod == "OPTIONS")
             {
-                CreateSuccessResponse(response, new NetworkAnswer(){ status = 200});
+                CreateResponse(response, new NetworkAnswer(){ status = 200});
                 if (_httpListener.IsListening)
                 {
                     _httpListener.BeginGetContext(new AsyncCallback(OnGetCallback), null);
@@ -70,7 +69,7 @@ namespace HTTPServer
             }
         }
 
-        private async void CreateSuccessResponse(HttpListenerResponse response, NetworkAnswer data = default)
+        private async void CreateResponse(HttpListenerResponse response, NetworkAnswer data = default)
         {
             response.SendChunked = false;
             response.StatusCode = data.status;
@@ -103,7 +102,7 @@ namespace HTTPServer
             if (handler != null)
             {
                 handler.ProcessParams(url);
-                CreateSuccessResponse(response, handler.GetAnswerData());
+                CreateResponse(response, handler.GetAnswerData());
             } else
             {
                 CreateErrorResponse(response, $"There are no handler for url {url}");
