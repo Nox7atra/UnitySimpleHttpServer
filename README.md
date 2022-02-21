@@ -71,3 +71,5 @@
 </ul>
 
 <h3>Исходники веб геймпада:</h3> https://github.com/Nox7atra/WebGamepadClient
+
+<h3>Статья разбирающая решение:</h3> https://habr.com/ru/post/652617/
