@@ -1,7 +1,7 @@
 {
   "name": "com.nox7atra.unityhttpserver",
   "displayName": "Unity Http Server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple Unity Http Server integration",
   "keywords": [
     "unity",
