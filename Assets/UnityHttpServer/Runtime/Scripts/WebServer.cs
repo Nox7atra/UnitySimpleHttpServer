@@ -18,7 +18,12 @@ namespace WebServer
         private Server _Server;
         private void Awake ()
         {
-            _Server = new Server(_ServerPath, _ServerPort);
+            InitServer(_ServerPath);
+        }
+
+        protected virtual void InitServer(string path)
+        {
+            _Server = new Server(path, _ServerPort);
         }
         private void OnDestroy ()
         {
@@ -62,7 +67,7 @@ namespace WebServer
         }
         public void WriteToClient(string request)
         {
-            string file_path = Application.streamingAssetsPath + GetPath(request);
+            string file_path = GetPath(request);
             if (file_path.IndexOf("..") >= 0 || !File.Exists(file_path))
             {
                 WriteHeaderToClient("text/plain", Error_Message.Length);
@@ -128,7 +133,7 @@ namespace WebServer
         public Server(string serverPath, int port)
         {
             _ServerPath = serverPath;
-            Listener = new TcpListener(port);
+            Listener = new TcpListener(IPAddress.Any, port);
             Listener.Start();
             _isRunning = true;
             Task.Run(Listen);

@@ -28,10 +28,10 @@ namespace HTTPServer
             _httpListener = new HttpListener();
             _httpListener.Prefixes.Add($"http://*:{_Port}/");
             _httpListener.Start();
-            _httpListener.BeginGetContext(new AsyncCallback(OnGetCallback), null);
+            _httpListener.BeginGetContext(OnGetCallback, null);
         }
 
-        private async void OnGetCallback (IAsyncResult result)
+        private void OnGetCallback (IAsyncResult result)
         {
             
             HttpListenerContext context = _httpListener.EndGetContext(result);
@@ -49,7 +49,7 @@ namespace HTTPServer
                 CreateResponse(response, new NetworkAnswer(){ status = 200});
                 if (_httpListener.IsListening)
                 {
-                    _httpListener.BeginGetContext(new AsyncCallback(OnGetCallback), null);
+                    _httpListener.BeginGetContext(OnGetCallback, null);
                 }
                 return;
             }
@@ -64,7 +64,7 @@ namespace HTTPServer
             }
             if (_httpListener.IsListening)
             {
-                _httpListener.BeginGetContext(new AsyncCallback(OnGetCallback), null);
+                _httpListener.BeginGetContext(OnGetCallback, null);
             }
         }
 
