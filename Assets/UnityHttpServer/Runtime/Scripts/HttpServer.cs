@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace HTTPServer
@@ -76,7 +75,7 @@ namespace HTTPServer
             response.StatusDescription = data.status == 200 ? "OK" : "Internal Server Error";
             using (var writer = new StreamWriter(response.OutputStream, response.ContentEncoding))
             {
-                await writer.WriteAsync(JsonConvert.SerializeObject(data));
+                await writer.WriteAsync(JsonUtility.ToJson(data));
             }
             response.Close();
         }
@@ -87,7 +86,7 @@ namespace HTTPServer
             response.StatusDescription = "Internal Server Error";
             using (var writer = new StreamWriter(response.OutputStream, response.ContentEncoding))
             {
-                await writer.WriteAsync(JsonConvert.SerializeObject(new NetworkAnswer()
+                await writer.WriteAsync(JsonUtility.ToJson(new NetworkAnswer()
                 {
                     status = 500,
                     errorMessage =  error

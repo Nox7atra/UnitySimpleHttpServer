@@ -8,6 +8,13 @@
     "http",
 	"web"
   ],
+  "samples": [
+        {
+            "displayName": "Http Gamepad",
+            "description": "Includes http server example for unity web gamepad",
+            "path": "Samples~/SampleGamepad"
+        },
+		],
   "author": "Nox7atra",
   "license": "MIT"
 }
